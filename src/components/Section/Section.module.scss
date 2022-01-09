@@ -3,10 +3,11 @@
   background-color: #fff;
   border-radius: 10px;
   overflow: hidden;
-  display: flex;
+  // display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 110px 130px 33px 95px;
+  padding: 50px 30px 33px 30px;
+  max-height: 700px;
 
   @media screen and (max-width: 576px) {
     padding: 100px 15px 33px;

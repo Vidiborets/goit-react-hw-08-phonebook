@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+}
+.title {
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #666666;
+  font-weight: 400;
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+}
+.button {
+  font-size: 12px;
+  //   line-height: 1.5;
+  color: #fff;
+  text-transform: uppercase;
+  width: 50px;
+  height: 20px;
+  border-radius: 25px;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 25px;
+  border: none;
+  outline: none;
+}

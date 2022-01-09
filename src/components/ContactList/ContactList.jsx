@@ -1,26 +1,39 @@
-import actions from '../../redux/actions'
-import PropTypes from 'prop-types'
-import s from './ContactList.module.scss'
-import { getVisibleContacts } from '../../redux/seletrors'
-import { useDispatch,useSelector } from 'react-redux'
+import PropTypes from 'prop-types';
+import s from './ContactList.module.scss';
+import { connect } from 'react-redux';
+import { contactsOperations, contactsSelectors } from '../../redux/contact';
 
-export default function ContactList () {
+const mapStateToProps = state => ({
+  contacts: contactsSelectors.getVisibleContacts(state),
+});
 
-  const contacts = useSelector(getVisibleContacts);
-  const dispatch = useDispatch();
+const mapDispatchToProps = dispatch => ({
+  onDeleteContact: id => dispatch(contactsOperations.deleteContact(id)),
+});
 
-    return (
-        <ul className={s.list}>
-            {contacts.map(({name,number,id}) => (
-                  <li className={s.itemList} key={id}>
-                  <span className={s.contactName}>{name}</span>
-                  <a className={s.contactNumber} href={`tel:${number}`}>{number}</a>
-                  <button className={s.contactDelete} type="button" onClick={() => dispatch(actions.deleteContacts(id))}>Удалить</button>
-              </li>
-            ))}
-       </ul>
-  )  
-}
+const ContactList = ({ contacts, onDeleteContact }) => {
+  return (
+    <ul className={s.list}>
+      {contacts.map(({ name, number, id }) => (
+        <li className={s.itemList} key={id}>
+          <span className={s.contactName}>{name}</span>
+          <a className={s.contactNumber} href={`tel:${number}`}>
+            {number}
+          </a>
+          <button
+            className={s.contactDelete}
+            type="button"
+            onClick={() => onDeleteContact(id)}
+          >
+            Удалить
+          </button>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
 
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
@@ -28,6 +41,6 @@ ContactList.propTypes = {
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
-    })
-  )
-}
+    }),
+  ),
+};
