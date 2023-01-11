@@ -50,7 +50,6 @@ export default function CreateLoginPage() {
             onChange={handleChange}
             name="name"
             value={name}
-            pattern="^[a-zA-Zа]+(([' -][a-zA-Zа ])?[a-zA-Zа]*)*$"
           />
         </label>
         <label>
@@ -68,7 +67,6 @@ export default function CreateLoginPage() {
             type="password"
             name="password"
             placeholder="Password"
-            pattern="^[a-zA-Zа]+(([' -][a-zA-Zа ])?[a-zA-Zа]*)*$"
             required
             className={s.input}
             onChange={handleChange}
