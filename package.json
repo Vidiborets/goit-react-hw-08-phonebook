@@ -16,7 +16,7 @@
     "axios": "^0.24.0",
     "gh-pages": "^3.2.3",
     "modern-normalize": "^1.1.0",
-    "netlify-cli": "^8.4.2",
+    "netlify-cli": "^12.12.0",
     "node-sass": "^6.0.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
